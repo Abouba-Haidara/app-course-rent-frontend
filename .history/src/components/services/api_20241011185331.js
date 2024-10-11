@@ -11,10 +11,6 @@ const api = axios.create({
 // Ajouter un intercepteur pour ajouter le token à chaque requête
 api.interceptors.request.use(
   (config) => {
-    /*const token = localStorage.getItem('access_token'); // Utilise un stockage sécurisé si possible
-    if (token) {
-      config.headers.Authorization = `Bearer ${token}`;
-    }*/
     return config;
   },
   (error) => Promise.reject(error)

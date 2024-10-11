@@ -14,7 +14,7 @@ api.interceptors.request.use(
     /*const token = localStorage.getItem('access_token'); // Utilise un stockage sécurisé si possible
     if (token) {
       config.headers.Authorization = `Bearer ${token}`;
-    }*/
+    }*
     return config;
   },
   (error) => Promise.reject(error)
