@@ -5,8 +5,8 @@ import 'leaflet/dist/leaflet.css';
 
 const CreateCourse = ({ onCourseCreated, title, isAdminForm = false }) => {
   const [formData, setFormData] = useState({
-    departureAddress: '',
-    arrivalAddress: '',
+    adresse_depart: '',
+    adresse_arrivee: '',
   });
 
   const [message, setMessage] = useState('');
@@ -27,7 +27,6 @@ const CreateCourse = ({ onCourseCreated, title, isAdminForm = false }) => {
       const endpoint = isAdminForm ? '/courses/admin' : '/courses';
       const response = await api.post(endpoint, {
         ...formData,
-        user: localStorage.getItem('id'),
         lat_depart: positionDepart[0],
         lng_depart: positionDepart[1],
         lat_arrivee: positionArrivee[0],
@@ -36,8 +35,8 @@ const CreateCourse = ({ onCourseCreated, title, isAdminForm = false }) => {
 
       setMessage(response.data.message || 'Course créée avec succès.');
       setFormData({
-        departureAddress: '',
-        arrivalAddress: '',
+        adresse_depart: '',
+        adresse_arrivee: '',
       });
       setError('');
 
@@ -81,7 +80,7 @@ const CreateCourse = ({ onCourseCreated, title, isAdminForm = false }) => {
                 <div className="form-floating mb-3">
                   <input
                     type="text"
-                    id="departureAddress"
+                    id="adresse_depart"
                     name="departureAddress"
                     className="form-control"
                     placeholder="Adresse de départ"
@@ -89,21 +88,21 @@ const CreateCourse = ({ onCourseCreated, title, isAdminForm = false }) => {
                     onChange={handleChange}
                     required
                   />
-                  <label htmlFor="departureAddress">Adresse de départ</label>
+                  <label htmlFor="adresse_depart">Adresse de départ</label>
                 </div>
 
                 <div className="form-floating mb-3">
                   <input
                     type="text"
-                    id="arrivalAddress"
-                    name="arrivalAddress"
+                    id="adresse_arrivee"
+                    name="adresse_arrivee"
                     className="form-control"
                     placeholder="Adresse d'arrivée"
-                    value={formData.arrivalAddress}
+                    value={formData.adresse_arrivee}
                     onChange={handleChange}
                     required
                   />
-                  <label htmlFor="arrivalAddress">Adresse d'arrivée</label>
+                  <label htmlFor="adresse_arrivee">Adresse d'arrivée</label>
                 </div>
 
                 <div className="text-center">

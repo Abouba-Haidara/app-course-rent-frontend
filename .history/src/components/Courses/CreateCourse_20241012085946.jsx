@@ -27,7 +27,7 @@ const CreateCourse = ({ onCourseCreated, title, isAdminForm = false }) => {
       const endpoint = isAdminForm ? '/courses/admin' : '/courses';
       const response = await api.post(endpoint, {
         ...formData,
-        user: localStorage.getItem('id'),
+        user: 
         lat_depart: positionDepart[0],
         lng_depart: positionDepart[1],
         lat_arrivee: positionArrivee[0],

@@ -5,7 +5,7 @@ import 'leaflet/dist/leaflet.css';
 
 const CreateCourse = ({ onCourseCreated, title, isAdminForm = false }) => {
   const [formData, setFormData] = useState({
-    departureAddress: '',
+    adresse_depart: '',
     arrivalAddress: '',
   });
 
@@ -27,7 +27,6 @@ const CreateCourse = ({ onCourseCreated, title, isAdminForm = false }) => {
       const endpoint = isAdminForm ? '/courses/admin' : '/courses';
       const response = await api.post(endpoint, {
         ...formData,
-        user: localStorage.getItem('id'),
         lat_depart: positionDepart[0],
         lng_depart: positionDepart[1],
         lat_arrivee: positionArrivee[0],
@@ -36,8 +35,8 @@ const CreateCourse = ({ onCourseCreated, title, isAdminForm = false }) => {
 
       setMessage(response.data.message || 'Course créée avec succès.');
       setFormData({
-        departureAddress: '',
-        arrivalAddress: '',
+        adresse_depart: '',
+        adresse_arrivee: '',
       });
       setError('');
 
