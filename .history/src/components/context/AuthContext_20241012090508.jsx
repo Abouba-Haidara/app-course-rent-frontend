@@ -45,7 +45,7 @@ export const AuthProvider = ({ children }) => {
   // Fonction d'inscription
   const register = async (username, email, password, password_confirmation) => {
     try {
-      const response = await api.post('/users/register', { username, email, password, password_confirmation });
+      const response = await api.post('/users/register', { name, email, password, password_confirmation });
       setUser(null);
       return { success: true };
     } catch (error) {

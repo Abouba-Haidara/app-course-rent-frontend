@@ -10,7 +10,7 @@ const Register = () => {
   const navigate = useNavigate();
   
   const [formData, setFormData] = useState({
-    username: '',
+    name: '',
     email: '',
     password: '',
   });
@@ -20,14 +20,14 @@ const Register = () => {
   const handleChange = (e) => {
     setFormData({ 
       ...formData, 
-      [e.target.username]: e.target.value 
+      [e.target.name]: e.target.value 
     });
   };
   
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const { username, email, password } = formData;
-    const result = await register(username, email, password);
+    const { name, email, password } = formData;
+    const result = await register(name, email, password);
     if (result.success) {
       navigate('/dashboard');
     } else {
@@ -58,14 +58,14 @@ const Register = () => {
                 {error && <div className="alert alert-danger">{error}</div>}
                 <form onSubmit={handleSubmit}>
                   <div className="mb-3">
-                    <label htmlFor="username" className="form-label">Nom</label>
+                    <label htmlFor="name" className="form-label">Nom</label>
                     <input 
                       type="text" 
-                      id="username" 
-                      name="username" 
+                      id="name" 
+                      name="name" 
                       className="form-control" 
                       placeholder="Entrez votre nom" 
-                      value={formData.username} 
+                      value={formData.name} 
                       onChange={handleChange} 
                       required 
                     />
